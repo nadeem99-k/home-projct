@@ -1,12 +1,13 @@
 import { FaSearch } from 'react-icons/fa';
 import Link from 'next/link';
+import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 export default function Header() {
   return (
     <header className='bg-slate-200 shadow-md'>
       <div className='flex justify-between items-center max-w-6xl mx-auto p-3'>
         <Link href='/'>
           <h1 className='font-bold text-sm sm:text-xl flex flex-wrap'>
-            <span className='text-slate-500'>Nadeem</span>
+            <span className='text-slate-500'>Sahand</span>
             <span className='text-slate-700'>Estate</span>
           </h1>
         </Link>
@@ -31,11 +32,16 @@ export default function Header() {
               About
             </li>
           </Link>
-          <Link href='/sign-in'>
-            <li className='hidden md:inline text-slate-700 hover:underline'>
-              Sign In
-            </li>
-          </Link>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+          <SignedOut>
+            <Link href='/sign-in'>
+              <li className='hidden md:inline text-slate-700 hover:underline'>
+                Sign In
+              </li>
+            </Link>
+          </SignedOut>
         </ul>
       </div>
     </header>
